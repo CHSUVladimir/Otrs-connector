@@ -1,0 +1,33 @@
+
+export type {ITicketAuth} from './SoapTypes';
+export type {ICustomers} from './SoapTypes';
+export type {IAuth} from './SoapTypes';
+export type {ITQueue} from './SoapTypes';
+export type {ITTitle} from './SoapTypes';
+export type {ITNumberId} from './SoapTypes';
+export type {ITState} from './SoapTypes';
+export type {ITPriority} from './SoapTypes';
+export type {ITLock} from './SoapTypes';
+export type {ITCustomer} from './SoapTypes';
+export type {ITOwner} from './SoapTypes';
+export type {ITType} from './SoapTypes';
+export type {ITSLA} from './SoapTypes';
+export type {ITService} from './SoapTypes';
+export type {ITResponsible} from './SoapTypes';
+export type {ITChange} from './SoapTypes';
+export type {ITCreated} from './SoapTypes';
+export type {ITTimes} from './SoapTypes';
+export type {ITicket} from './SoapTypes';
+export type {IAComunication} from './SoapTypes';
+export type {IAMail} from './SoapTypes';
+export type {IASender} from './SoapTypes';
+export type {IAContent} from './SoapTypes';
+export type {IATime} from './SoapTypes';
+export type {IArticle} from './SoapTypes';
+export type {IDynamicField} from './SoapTypes';
+export type {IArticleAttachment} from './SoapTypes';
+export type {ITicketCreate} from './SoapTypes';
+export type {IPendingTime} from './SoapTypes';
+export type {IAddArticle} from './SoapTypes';
+export type {ITCResponse} from './SoapTypes';
+
