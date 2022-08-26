@@ -1,5 +1,5 @@
 {
-  "name": "otrs-connector",
+  "name": "@CHSUVladimir/otrs-connector",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/cjs/index.js",
@@ -7,19 +7,19 @@
   "types": "./dist/esm/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CHSUVladimir/test-library.git"
+    "url": "https://github.com/CHSUVladimir/otrs-connector"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "start": "react-scripts start",
-	  "builscript": "react-scripts build",
+    "builscript": "react-scripts build",
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run prettier && npm run lint",
+    "prepublishOnly": "npm test && npm run prettier ",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
     "test": "jest --config jestconfig.json"
@@ -41,7 +41,7 @@
     "@testing-library/react": "^13.3.0",
     "@types/jest": "^28.1.8",
     "@types/react": "^18.0.17",
-    "@typescript-eslint/eslint-plugin": "^5.34.0",
+    "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.34.0",
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
