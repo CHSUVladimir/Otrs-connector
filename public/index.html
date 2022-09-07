@@ -280,9 +280,105 @@ Auditori
 <style type="text/css" class="LineWidth">.auto-style1{width:994px}.auto-style2{width:30px;background-color:red}.auto-style3{width:30px;background-color:#ff0}.auto-style4{width:30px;background-color:#3c3}.auto-style5{text-align:right}.auto-style6{text-align:left}.TextAlginCenter{text-align:center}.HeaderCell{font-size:14pt;font-family:Arial,Helvetica,sans-serif;text-align:center;background-color:#0ff;border:thin solid #000;width:200px;height:35px}.HeaderCellH{background-color:#6ff;font-size:14pt;font-family:Arial,Helvetica,sans-serif;text-align:center;background-color:#f30;border:thin solid #000;width:200px;height:35px}.LineWidth{width:1430px}.LineWidthHeight{width:200px;height:200px}</style>
 <!-- place for maket values /!-->
 <div id="root"> </div>
+<div style="width: 100%;">
+	<h2>Подключения</h2>
+	<p><label style="width: 10em;display: inline-block;" >OTRSAgent</label> <input id="agent"/></p>
+	<p><label style="width: 10em;display: inline-block;" >OTRSAgentPwd</label> <input id="pwd"/></p>
+	<p><label style="width: 10em;display: inline-block;" >Login</label> <input id="login"/></p>
+	<p><label style="width: 10em;display: inline-block;" >URL</label> <input id="url" style="width: 100%;"/></p>
+	<div class="button green" onclick="Connect()">Connect</div>
+	<div id="sessionResult"></div>
+</div>
+<div style="width: 100%; margin-top: 2em;">
+	<h2>Поиск заявок</h2>
+	<p><label style="width: 10em;display: inline-block;" title="Через ;">набор типов</label> <input id="types"/></p>
+	<p><label style="width: 10em;display: inline-block;" title="Через ;">набор идентификаторов открытых заявок</label> <input id="typesO"/></p>
+	<p><label style="width: 10em;display: inline-block;" title="Через ;">набор идентификаторов закрытых заявок</label> <input id="typesC"/></p>
+	<p><label style="width: 10em;display: inline-block;" >URL TS</label> <input id="urlTS" style="width: 100%;"/></p>
+	
+	<div class="button green" onclick="getAll()">Get All</div>
+	<div class="button green" onclick="getOpen()">Get Open</div>
+	<div class="button green" onclick="getClose()">Get closed</div>
+	<div id="AllResult" style="max-width: 75vw;"></div>
+</div>
 
 
+<script>
+	function Connect(){
+		OTRSSession.TimerInterval=3600000;
+		const sesData={
+			UserLogin:document.getElementById("agent").value,
+			CustomerUserLogin:document.getElementById("login").value,
+			Password:document.getElementById("pwd").value
+		};
+		OTRSSession.URL =document.getElementById("url").value;
+		const ses=new OTRSSession(sesData, () => {
+			document.getElementById("sessionResult").innerHTML=`
+		Session ID: <span>${OTRSSession.SessionId()}</span>
+		`
+		const date = new Date();
+		console.log(date + ' - Connect')
+		});		
+	}
 
+	function getAll(){
+		const ts = new OTRSTicketSearch()
+		OTRSTicketSearch.URL=document.getElementById("urlTS").value 
+		const st =ts.SearchTerms
+		st.SessionID = OTRSSession.SessionId()
+		st.CustomerUserLogin =[ document.getElementById("login").value ]
+		st.TypeIDs = document.getElementById("types").value.split(';')
+		st.Limit=10000	
+		ts.Search().then(r=>{
+			document.getElementById("AllResult").innerHTML=`
+			All: ${r}</br>
+			Count:${r.length}
+			`
+		})	
+		const date = new Date()
+		console.log(date + ' - Get All')
+	}
+
+	function getOpen(){
+		const ts = new OTRSTicketSearch()
+		OTRSTicketSearch.URL=document.getElementById("urlTS").value 
+		const st =ts.SearchTerms
+		st.SessionID = OTRSSession.SessionId()
+		st.CustomerUserLogin =[ document.getElementById("login").value ]
+		st.TypeIDs = document.getElementById("types").value.split(';')
+		st.Limit=10000
+		st.StateIDs = document.getElementById("typesO").value.split(';')
+		ts.Search().then(r=>{
+			document.getElementById("AllResult").innerHTML=`
+			All: ${r}</br>
+			Count:${r.length}
+			`
+		})
+		const date = new Date()
+		console.log(date + ' - Get Open')
+	}
+
+	function getClose(){
+		const ts = new OTRSTicketSearch()
+		OTRSTicketSearch.URL=document.getElementById("urlTS").value 
+		const st =ts.SearchTerms
+		st.SessionID = OTRSSession.SessionId()
+		st.CustomerUserLogin =[ document.getElementById("login").value ]
+		st.TypeIDs = document.getElementById("types").value.split(';')
+		st.Limit=10000
+		st.StateIDs = document.getElementById("typesC").value.split(';')
+		ts.Search().then(r=>{
+			document.getElementById("AllResult").innerHTML=`
+			All: ${r}</br>
+			Count:${r.length}
+			`
+		})
+		const date = new Date()
+		console.log(date + ' - Get Close')
+	}
+
+	
+</script>
 
 
 
