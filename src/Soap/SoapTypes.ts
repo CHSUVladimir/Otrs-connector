@@ -1145,8 +1145,104 @@ ITSTicketChange, ITSTicketPending, ITSTicketEscalation, ITSAOS
     Ticketflag?:ITicketFlag;
 }
 
+
+/**
+ * @see https://doc.znuny.org/doc/api/otrs/6.0/Perl/Kernel/GenericInterface/Operation/Ticket/TicketGet.pm.html
+ * @see https://doc.otrs.com/doc/manual/admin/6.0/ru/html/genericinterface.html#id-1.6.12.5.4.2
+ */
+
+/**
+  * Набор идентификаторов заявок
+  */
+ export interface ITGTicket{
+  /**
+   * @OneOrMore
+   * @required
+   * Набор идентификаторов заявок
+   */
+  TicketID: number | number[];
+}
+
+/**
+  * Нужен ли набор динамических полей
+  */
+ export interface ITGDynamicFields{
+  /**
+   * @optional
+   * 0 as default. Indicate if Dynamic Fields
+   * should be included or not on the ticket content.
+   */
+  DynamicFields?:boolean;
+}
+
+/**
+  * Необходимость отображения расширения
+  */
+ export interface ITGExtended{
+  /**
+   * @optional 0 as default
+   */
+   Extended?:boolean;
+}
+
+/**
+* Реплики по заявке
+*/
+export interface ITGArticles{
+  /**
+   * @optional
+   *  0 as default. Set as 1 will include articles for tickets.
+   */
+   AllArticles?:boolean;
+   /**
+   * @optional
+   * only requested article sender types
+   */
+   ArticleSenderType?:string[];
+    /**
+   * @optional
+   * DESC,ASC - default is ASC
+   */
+  ArticleOrder?:string;
+  /**
+   * @optional
+   */
+   ArticleLimit?:number;
+}
+
+/**
+* Приложения к заявке
+*/
+export interface ITGAttachments{
+  /**
+   * @optional
+   * 0 as default. If it's set with the value 1,
+   * attachments for articles will be included on ticket data
+   */
+  Attachments?:boolean;
+  /**
+   * @optional
+   *  1 as default. 0|1
+   */
+  GetAttachmentContents?:boolean;
+  /**
+   * @optional
+   * If enabled the HTML body version of each article
+   * is added to the attachments list
+   */
+  HTMLBodyAsAttachment?:boolean;
+}
+
+/**
+* Базовый интерфейс
+*/
+export interface ITGBase extends IAuth, ITGTicket, ITGDynamicFields, ITGExtended,
+ITGArticles,ITGAttachments
+{}
+
+
 export interface ValuePart{
-  PartName:'SessionCreate'|'TicketSearch';
+  PartName:'SessionCreate'|'TicketSearch'|'TicketGet';
   Values:any;
 }
 
@@ -1157,7 +1253,7 @@ export interface IOTRSAnswer{
 export interface IOTRSBodyAnswer{
   SessionCreateResponse:IOTRSSessionAnswer;
   TicketSearchResponse:ITicketSearchResponse;
-
+  TicketGetResponse :ITicketGetResponse;
 }
 
 export interface IOTRSSessionAnswer extends Error{
@@ -1170,4 +1266,8 @@ export interface Error{
 
 export interface ITicketSearchResponse extends Error{
   TicketID:number[]|number;
+}
+
+export interface ITicketGetResponse extends Error{
+  Ticket:ITicket|ITicket[]
 }

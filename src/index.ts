@@ -1,61 +1,71 @@
-export type { ITicketAuth } from './Soap/Index'
-export type { ICustomers } from './Soap/Index'
-export type { IAuth } from './Soap/Index'
-export type { ITQueue } from './Soap/Index'
-export type { ITTitle } from './Soap/Index'
-export type { ITNumberId } from './Soap/Index'
-export type { ITState } from './Soap/Index'
-export type { ITPriority } from './Soap/Index'
-export type { ITLock } from './Soap/Index'
-export type { ITCustomer } from './Soap/Index'
-export type { ITOwner } from './Soap/Index'
-export type { ITType } from './Soap/Index'
-export type { ITSLA } from './Soap/Index'
-export type { ITService } from './Soap/Index'
-export type { ITResponsible } from './Soap/Index'
-export type { ITChange } from './Soap/Index'
-export type { ITCreated } from './Soap/Index'
-export type { ITTimes } from './Soap/Index'
-export type { ITicket } from './Soap/Index'
-export type { IAComunication } from './Soap/Index'
-export type { IAMail } from './Soap/Index'
-export type { IASender } from './Soap/Index'
-export type { IAContent } from './Soap/Index'
-export type { IATime } from './Soap/Index'
-export type { IArticle } from './Soap/Index'
-export type { IDynamicField } from './Soap/Index'
-export type { IArticleAttachment } from './Soap/Index'
-export type { ITicketCreate } from './Soap/Index'
-export type { IPendingTime } from './Soap/Index'
-export type { IAddArticle } from './Soap/Index'
-export type { ITCResponse } from './Soap/Index'
-export type { ISession } from './Soap/SoapTypes'
-export type { ITSTicket } from './Soap/SoapTypes'
-export type { ITSQueues } from './Soap/SoapTypes'
-export type { ITSTypes } from './Soap/SoapTypes'
-export type { ITSState } from './Soap/SoapTypes'
-export type { ITSPriorities } from './Soap/SoapTypes'
-export type { ITSServices } from './Soap/SoapTypes'
-export type { ITSLocks } from './Soap/SoapTypes'
-export type { ITSOwner } from './Soap/SoapTypes'
-export type { ITSResponse } from './Soap/SoapTypes'
-export type { ITSCustomer } from './Soap/SoapTypes'
-export type { ITSCreated } from './Soap/SoapTypes'
-export type { IDynamicFieldTS } from './Soap/SoapTypes'
-export type { ITicketFlag } from './Soap/SoapTypes'
-export type { ITSMail } from './Soap/SoapTypes'
-export type { ITSSearchConditions } from './Soap/SoapTypes'
-export type { ITSArticleCreate } from './Soap/SoapTypes'
-export type { ITSTicketCreate } from './Soap/SoapTypes'
-export type { ITSTicketLastChange } from './Soap/SoapTypes'
-export type { ITSTicketChange } from './Soap/SoapTypes'
-export type { ITSTicketClose } from './Soap/SoapTypes'
-export type { ITSTicketPending } from './Soap/SoapTypes'
-export type { ITSTicketEscalation } from './Soap/SoapTypes'
-export type { ITSAOS } from './Soap/SoapTypes'
-export type { ITSBase } from './Soap/SoapTypes'
-export type { Error } from './Soap/SoapTypes'
-export type { ITicketSearchResponse } from './Soap/SoapTypes'
+export type {
+  ITicketAuth,
+  ICustomers,
+  IAuth,
+  ITQueue,
+  ITTitle,
+  ITNumberId,
+  ITState,
+  ITPriority,
+  ITLock,
+  ITCustomer,
+  ITOwner,
+  ITType,
+  ITSLA,
+  ITService,
+  ITResponsible,
+  ITChange,
+  ITCreated,
+  ITTimes,
+  ITicket,
+  IAComunication,
+  IAMail,
+  IASender,
+  IAContent,
+  IATime,
+  IArticle,
+  IDynamicField,
+  IArticleAttachment,
+  ITicketCreate,
+  IPendingTime,
+  IAddArticle,
+  ITCResponse,
+} from './Soap/Index'
+export type {
+  ISession,
+  ITSTicket,
+  ITSQueues,
+  ITSTypes,
+  ITSState,
+  ITSPriorities,
+  ITSServices,
+  ITSLocks,
+  ITSOwner,
+  ITSResponse,
+  ITSCustomer,
+  ITSCreated,
+  IDynamicFieldTS,
+  ITicketFlag,
+  ITSMail,
+  ITSSearchConditions,
+  ITSArticleCreate,
+  ITSTicketCreate,
+  ITSTicketLastChange,
+  ITSTicketChange,
+  ITSTicketClose,
+  ITSTicketPending,
+  ITSTicketEscalation,
+  ITSAOS,
+  ITSBase,
+  Error,
+  ITicketSearchResponse,
+  ITGTicket,
+  ITGDynamicFields,
+  ITGExtended,
+  ITGArticles,
+  ITGAttachments,
+  ITGBase,
+} from './Soap/SoapTypes'
 
 export { default as Connector } from './OTRS/OTRSConnector'
 export { default as Soap } from './Soap/SoapSerialitor'
@@ -63,6 +73,9 @@ export { default as OTRSSession } from './OTRS/OTRSSession'
 import { default as OTRSSession } from './OTRS/OTRSSession'
 export { default as OTRSTicketSearch } from './OTRS/TicketSearch'
 import { default as OTRSTicketSearch } from './OTRS/TicketSearch'
+export { default as OTRSTicketGet } from './OTRS/TicketGet'
+import { default as OTRSTicketGet } from './OTRS/TicketGet'
 
 Object.defineProperties(global, { OTRSSession: { value: OTRSSession } })
 Object.defineProperties(global, { OTRSTicketSearch: { value: OTRSTicketSearch } })
+Object.defineProperties(global, { OTRSTicketGet: { value: OTRSTicketGet } })

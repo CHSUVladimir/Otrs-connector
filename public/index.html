@@ -301,7 +301,13 @@ Auditori
 	<div class="button green" onclick="getClose()">Get closed</div>
 	<div id="AllResult" style="max-width: 75vw;"></div>
 </div>
-
+<div style="width: 100%; margin-top: 2em;">
+	<h2>Отображение заявок</h2>
+	<p><label style="width: 12em;display: inline-block;" title="Через ;">Идентификатор заявки</label> <input id="tid"/></p>
+	<p><label style="width: 10em;display: inline-block;" >URL TG</label> <input id="urlTG" style="width: 100%;"/></p>
+	<div class="button green" onclick="getTickets()">Get Ticket</div>
+	<div id="TicketResult" style="max-width: 75vw;"></div>
+</div>
 
 <script>
 	function Connect(){
@@ -377,7 +383,24 @@ Auditori
 		console.log(date + ' - Get Close')
 	}
 
-	
+	function getTickets(){
+		OTRSTicketGet.URL=document.getElementById("urlTG").value 
+		const tg = new OTRSTicketGet()
+		const tgC = tg.TicketConditions()
+		tgC.SessionID = OTRSSession.SessionId()  
+		tgC.AllArticles=true
+		tgC.DynamicFields=true
+		tgC.HTMLBodyAsAttachment=true
+		tgC.GetAttachmentContents=true
+		tgC.Attachments=true
+		tgC.TicketID= document.getElementById("tid").value.split(';')
+		tg.GetTickets().then(m=>{
+			document.getElementById("TicketResult").innerHTML=JSON.stringify(m)
+		})
+		const date = new Date()
+		console.log(date + ' - Get Tickets')
+	}
+
 </script>
 
 
