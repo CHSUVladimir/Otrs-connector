@@ -308,6 +308,15 @@ Auditori
 	<div class="button green" onclick="getTickets()">Get Ticket</div>
 	<div id="TicketResult" style="max-width: 75vw;"></div>
 </div>
+<div style="width: 100%; margin-top: 2em;">
+	<h2>Создание заявки</h2>
+	<p><label style="width: 10em;display: inline-block;" >URL TC</label> <input id="urlTC" style="width: 100%;"/></p>
+	<p><label style="width: 10em;display: inline-block;" >Title</label> <input id="TicTitle"/></p>
+	<p><label style="width: 10em;display: inline-block;" >QueueID</label> <input id="QueueID"/></p>
+	<p><label style="width: 10em;display: inline-block;" >ArticleBody</label> <textarea id="ArticleBody"> </textarea></p>
+	<div class="button green" onclick="createTicket()">Create Ticket</div>
+	<div id="TicketCreateResult" style="max-width: 75vw;"></div>
+</div>
 
 <script>
 	function Connect(){
@@ -399,6 +408,47 @@ Auditori
 		})
 		const date = new Date()
 		console.log(date + ' - Get Tickets')
+	}
+
+	function getTicket(){
+		var res={}
+		res.Title=document.getElementById('TicTitle').value;
+        res.QueueID=document.getElementById('QueueID').value;
+        res.StateID=1;
+        res.TypeID=1;
+        res.ServiceID="2";
+        res.CustomerID="ЧГУ";
+        res.CustomerUser=document.getElementById("login").value;
+        res.PriorityID=3;
+
+		return res;
+	}
+
+	function getArticle(){
+		let res={};
+		res.Subject=document.getElementById('TicTitle').value;
+        res.Body=OTRSTicketCreate.EscapeBracket(document.getElementById("ArticleBody").value);
+        res.ContentType="text/html; charset=utf8";
+        res.Charset="utf-8";
+        res.MimeType="text/html";
+        res.IsVisibleForCustomer=1;
+        res.SenderTypeID="3"; 
+		return res;
+	}
+
+	function createTicket(){
+		OTRSTicketCreate.URL=document.getElementById("urlTC").value 
+		const tc = new OTRSTicketCreate()
+		const tv = tc.TicketCreate
+		tv.SessionID = OTRSSession.SessionId() 
+		tv.Ticket = getTicket()
+		tv.Article = getArticle()
+		tc.Create().then(m=>{
+			document.getElementById("TicketCreateResult").innerHTML=JSON.stringify(m)
+		})
+		console.log(tc)
+		const date = new Date()
+		console.log(date + ' - Create Ticket')
 	}
 
 </script>

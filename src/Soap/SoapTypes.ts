@@ -1240,9 +1240,32 @@ export interface ITGBase extends IAuth, ITGTicket, ITGDynamicFields, ITGExtended
 ITGArticles,ITGAttachments
 {}
 
+/**
+ * @interface базовый для создания заявки
+ * @extends {IAuth}
+ */
+ export interface ITicketCreateBase extends IAuth {
+  /**
+   * Тело заявки
+   */
+  Ticket:ITicketCreate;
+   /**
+   * Реплика
+   */
+    Article:IAddArticle;
+  /**
+   * набор динамических полей
+   */
+  DynamicField?:IDynamicField[];
+  /**
+   * набор прикрепленных приложений
+   */
+   Attachment:IArticleAttachment[];
+}
+
 
 export interface ValuePart{
-  PartName:'SessionCreate'|'TicketSearch'|'TicketGet';
+  PartName:'SessionCreate'|'TicketSearch'|'TicketGet'|'TicketCreate';
   Values:any;
 }
 
@@ -1254,6 +1277,7 @@ export interface IOTRSBodyAnswer{
   SessionCreateResponse:IOTRSSessionAnswer;
   TicketSearchResponse:ITicketSearchResponse;
   TicketGetResponse :ITicketGetResponse;
+  TicketCreateResponse : ITicketCreateResponse;
 }
 
 export interface IOTRSSessionAnswer extends Error{
@@ -1270,4 +1294,8 @@ export interface ITicketSearchResponse extends Error{
 
 export interface ITicketGetResponse extends Error{
   Ticket:ITicket|ITicket[]
+}
+
+export interface ITicketCreateResponse extends Error, ITCResponse{
+
 }

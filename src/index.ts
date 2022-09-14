@@ -65,6 +65,12 @@ export type {
   ITGArticles,
   ITGAttachments,
   ITGBase,
+  ITicketCreateBase,
+  IOTRSAnswer,
+  IOTRSBodyAnswer,
+  IOTRSSessionAnswer,
+  ITicketGetResponse,
+  ITicketCreateResponse,
 } from './Soap/SoapTypes'
 
 export { default as Connector } from './OTRS/OTRSConnector'
@@ -75,7 +81,10 @@ export { default as OTRSTicketSearch } from './OTRS/TicketSearch'
 import { default as OTRSTicketSearch } from './OTRS/TicketSearch'
 export { default as OTRSTicketGet } from './OTRS/TicketGet'
 import { default as OTRSTicketGet } from './OTRS/TicketGet'
+export { default as OTRSTicketCreate } from './OTRS/TicketCreate'
+import { default as OTRSTicketCreate } from './OTRS/TicketCreate'
 
 Object.defineProperties(global, { OTRSSession: { value: OTRSSession } })
 Object.defineProperties(global, { OTRSTicketSearch: { value: OTRSTicketSearch } })
 Object.defineProperties(global, { OTRSTicketGet: { value: OTRSTicketGet } })
+Object.defineProperties(global, { OTRSTicketCreate: { value: OTRSTicketCreate } })
