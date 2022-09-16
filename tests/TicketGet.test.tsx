@@ -1,11 +1,12 @@
-import { ITicket } from "../src"
-import TicketGet from "../src/OTRS/TicketGet"
+import { ITicket } from '../src'
+import TicketGet from '../src/OTRS/TicketGet'
 
-const headers : HeadersInit = new Headers()
-headers.set('Content-Type','text/xml') 
+const headers: HeadersInit = new Headers()
+headers.set('Content-Type', 'text/xml')
 
-const mock1Response:Response={
-    text:()=>Promise.resolve(`<?xml version="1.0" encoding="UTF-8"?><soap:Envelope soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><TicketGetResponse xmlns="http://10.0.0.12/nph-genericinterface.pl/Webservice/SharePointWC"><Ticket><Age>17022130</Age><ArchiveFlag>n</ArchiveFlag><Article><ArticleID>7017</ArticleID><ArticleNumber>1</ArticleNumber><Attachment><Content>PHNwYW4gY3Q9J1R5cGVFcXVpcCc+0J3QsNC40LzQtdC90L7QstCw0L3QuNC1INGC0LXRhdC90LjQ
+const mock1Response: Response = {
+  text: () =>
+    Promise.resolve(`<?xml version="1.0" encoding="UTF-8"?><soap:Envelope soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><TicketGetResponse xmlns="http://10.0.0.12/nph-genericinterface.pl/Webservice/SharePointWC"><Ticket><Age>17022130</Age><ArchiveFlag>n</ArchiveFlag><Article><ArticleID>7017</ArticleID><ArticleNumber>1</ArticleNumber><Attachment><Content>PHNwYW4gY3Q9J1R5cGVFcXVpcCc+0J3QsNC40LzQtdC90L7QstCw0L3QuNC1INGC0LXRhdC90LjQ
     utC4OiDQn9GA0LjQvdGCINGB0LXRgNCy0LXRgDwvc3Bhbj48YnI+PHNwYW4gY3Q9J01vZGVsJz7Q
     nNC+0LTQtdC70Yw6IEQtTGluayBEUFIgMTA2MTwvc3Bhbj48YnI+PHNwYW4gY3Q9J0ludk51bWJl
     cic+0JjQvdCy0LXQvdGC0LDRgNC90YvQuSDQvdC+0LzQtdGAOiAxMDEzNDQwMzM3PC9zcGFuPjxi
@@ -43,31 +44,37 @@ const mock1Response:Response={
     на печать, то будет распечатан документ который был отправлен с моего, с
     дополнительной страницей с крякозябрами.
     </Body><Cc /><ChangeBy>3</ChangeBy><ChangeTime>2022-02-28 09:28:20</ChangeTime><Charset>utf8</Charset><CommunicationChannelID>3</CommunicationChannelID><ContentCharset>utf8</ContentCharset><ContentType>text/plain; charset=utf8</ContentType><CreateBy>3</CreateBy><CreateTime>2022-02-28 09:28:20</CreateTime><From>"vetrunov" &lt;vetrunov@chsu.ru&gt;</From><InReplyTo /><IncomingTime>1646029700</IncomingTime><IsVisibleForCustomer>1</IsVisibleForCustomer><MessageID /><MimeType>text/plain</MimeType><References /><ReplyTo /><SenderType>customer</SenderType><SenderTypeID>3</SenderTypeID><Subject>Ремонт компьютерной техники (кроме принтеров)</Subject><TicketID>1355</TicketID><TimeUnit>0</TimeUnit><To>УИТ::Ремонт компьютерной техники</To></Article><ChangeBy>3</ChangeBy><Changed>2022-02-28 09:28:20</Changed><CreateBy>3</CreateBy><Created>2022-02-28 09:28:20</Created><CustomerID>ЧГУ</CustomerID><CustomerUserID>vetrunov</CustomerUserID><DynamicField><Name>EndAdversment</Name><Value /></DynamicField><DynamicField><Name>ProcessManagementActivityID</Name><Value /></DynamicField><DynamicField><Name>ProcessManagementProcessID</Name><Value /></DynamicField><DynamicField><Name>StartAdversment</Name><Value /></DynamicField><EscalationResponseTime>0</EscalationResponseTime><EscalationSolutionTime>0</EscalationSolutionTime><EscalationTime>0</EscalationTime><EscalationUpdateTime>0</EscalationUpdateTime><GroupID>8</GroupID><Lock>unlock</Lock><LockID>1</LockID><Owner>SharePointAgent</Owner><OwnerID>3</OwnerID><Priority>3 normal</Priority><PriorityID>3</PriorityID><Queue>УИТ::Обслуживание оргтехники::Ремонт компьютерной техники</Queue><QueueID>14</QueueID><RealTillTimeNotUsed>0</RealTillTimeNotUsed><Responsible>otrs-admin</Responsible><ResponsibleID>1</ResponsibleID><SLAID /><Service>SharePointWC</Service><ServiceID>2</ServiceID><State>new</State><StateID>1</StateID><StateType>new</StateType><TicketID>1355</TicketID><TicketNumber>2022022801000017</TicketNumber><TimeUnit>0</TimeUnit><Title>Ремонт компьютерной техники (кроме принтеров)</Title><Type>Unclassified</Type><TypeID>1</TypeID><UnlockTimeout>0</UnlockTimeout><UntilTime>0</UntilTime></Ticket></TicketGetResponse></soap:Body></soap:Envelope>`),
-            headers:headers,
-            ok:true,
-            redirected:false,
-            status:200,
-            statusText:'Ok',
-            type:'default',
-            url:'testURL',
-            clone:()=>{return mock1Response},
-            body:null,
-            bodyUsed:true,
-            arrayBuffer:()=>new Promise<ArrayBuffer>((resolve)=>{
-                resolve(new ArrayBuffer(8))
-            }),
-            blob:()=>new Promise<Blob>((resolve)=>{
-                resolve(new Blob())
-            }),
-            formData:()=>new Promise<FormData>(resolve=>{
-                let f:FormData=new FormData();
-                resolve(f);
-            }),
-            json:()=>Promise.resolve(undefined),
+  headers: headers,
+  ok: true,
+  redirected: false,
+  status: 200,
+  statusText: 'Ok',
+  type: 'default',
+  url: 'testURL',
+  clone: () => {
+    return mock1Response
+  },
+  body: null,
+  bodyUsed: true,
+  arrayBuffer: () =>
+    new Promise<ArrayBuffer>((resolve) => {
+      resolve(new ArrayBuffer(8))
+    }),
+  blob: () =>
+    new Promise<Blob>((resolve) => {
+      resolve(new Blob())
+    }),
+  formData: () =>
+    new Promise<FormData>((resolve) => {
+      let f: FormData = new FormData()
+      resolve(f)
+    }),
+  json: () => Promise.resolve(undefined),
 }
 
-const mock3Response:Response={
-    text:()=>Promise.resolve(`<?xml version="1.0" encoding="UTF-8"?><soap:Envelope soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><TicketGetResponse xmlns="http://10.0.0.12/nph-genericinterface.pl/Webservice/SharePointWC"><Ticket><Age>17022393</Age><ArchiveFlag>n</ArchiveFlag><Article><ArticleID>7017</ArticleID><ArticleNumber>1</ArticleNumber><Attachment><Content>PHNwYW4gY3Q9J1R5cGVFcXVpcCc+0J3QsNC40LzQtdC90L7QstCw0L3QuNC1INGC0LXRhdC90LjQ
+const mock3Response: Response = {
+  text: () =>
+    Promise.resolve(`<?xml version="1.0" encoding="UTF-8"?><soap:Envelope soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><TicketGetResponse xmlns="http://10.0.0.12/nph-genericinterface.pl/Webservice/SharePointWC"><Ticket><Age>17022393</Age><ArchiveFlag>n</ArchiveFlag><Article><ArticleID>7017</ArticleID><ArticleNumber>1</ArticleNumber><Attachment><Content>PHNwYW4gY3Q9J1R5cGVFcXVpcCc+0J3QsNC40LzQtdC90L7QstCw0L3QuNC1INGC0LXRhdC90LjQ
     utC4OiDQn9GA0LjQvdGCINGB0LXRgNCy0LXRgDwvc3Bhbj48YnI+PHNwYW4gY3Q9J01vZGVsJz7Q
     nNC+0LTQtdC70Yw6IEQtTGluayBEUFIgMTA2MTwvc3Bhbj48YnI+PHNwYW4gY3Q9J0ludk51bWJl
     cic+0JjQvdCy0LXQvdGC0LDRgNC90YvQuSDQvdC+0LzQtdGAOiAxMDEzNDQwMzM3PC9zcGFuPjxi
@@ -418,27 +425,32 @@ const mock3Response:Response={
     OiAxMnB4OyI+0KLQtdGB0YIg0LfQsNCy0LXRgNGI0LXQvSDRg9GB0L/QtdGI0L3QviE8L2JvZHk+
     PC9odG1sPg==
     </Content><ContentAlternative /><ContentID /><ContentType>text/html; charset="utf-8"</ContentType><Disposition>inline</Disposition><FileID>1</FileID><Filename>file-2</Filename><FilesizeRaw>235</FilesizeRaw></Attachment><Bcc /><Body>Тест завершен успешно!</Body><Cc /><ChangeBy>1</ChangeBy><ChangeTime>2019-03-18 11:47:33</ChangeTime><Charset>utf-8</Charset><CommunicationChannelID>3</CommunicationChannelID><ContentCharset>utf-8</ContentCharset><ContentType>text/plain; charset=utf-8</ContentType><CreateBy>1</CreateBy><CreateTime>2019-03-18 11:47:33</CreateTime><From>"Admin OTRS" &lt;otrs-admin&gt;</From><InReplyTo /><IncomingTime>1552909653</IncomingTime><IsVisibleForCustomer>0</IsVisibleForCustomer><MessageID /><MimeType>text/plain</MimeType><References /><ReplyTo /><SenderType>agent</SenderType><SenderTypeID>1</SenderTypeID><Subject>Тест завершен успешно!</Subject><TicketID>10</TicketID><TimeUnit>0</TimeUnit><To /></Article><ChangeBy>1</ChangeBy><Changed>2019-03-18 11:47:33</Changed><CreateBy>1</CreateBy><Created>2019-03-13 13:26:43</Created><CustomerID>ОРиСПО</CustomerID><CustomerUserID>vetrunov</CustomerUserID><DynamicField><Name>EndAdversment</Name><Value /></DynamicField><DynamicField><Name>ProcessManagementActivityID</Name><Value /></DynamicField><DynamicField><Name>ProcessManagementProcessID</Name><Value /></DynamicField><DynamicField><Name>StartAdversment</Name><Value /></DynamicField><EscalationResponseTime>0</EscalationResponseTime><EscalationSolutionTime>0</EscalationSolutionTime><EscalationTime>0</EscalationTime><EscalationUpdateTime>0</EscalationUpdateTime><GroupID>1</GroupID><Lock>unlock</Lock><LockID>1</LockID><Owner>otrs-admin</Owner><OwnerID>1</OwnerID><Priority>3 normal</Priority><PriorityID>3</PriorityID><Queue>УИТ::Обслуживание оргтехники::Заправка картриджа</Queue><QueueID>7</QueueID><RealTillTimeNotUsed>0</RealTillTimeNotUsed><Responsible>otrs-admin</Responsible><ResponsibleID>1</ResponsibleID><SLAID /><Service>SharePointWC</Service><ServiceID>2</ServiceID><State>closed successful</State><StateID>2</StateID><StateType>closed</StateType><TicketID>10</TicketID><TicketNumber>2019031301000013</TicketNumber><TimeUnit>0</TimeUnit><Title>Test</Title><Type>Unclassified</Type><TypeID>1</TypeID><UnlockTimeout>1552909653</UnlockTimeout><UntilTime>0</UntilTime></Ticket></TicketGetResponse></soap:Body></soap:Envelope>`),
-            headers:headers,
-            ok:true,
-            redirected:false,
-            status:200,
-            statusText:'Ok',
-            type:'default',
-            url:'testURL',
-            clone:()=>{return mock3Response},
-            body:null,
-            bodyUsed:true,
-            arrayBuffer:()=>new Promise<ArrayBuffer>((resolve)=>{
-                resolve(new ArrayBuffer(8))
-            }),
-            blob:()=>new Promise<Blob>((resolve)=>{
-                resolve(new Blob())
-            }),
-            formData:()=>new Promise<FormData>(resolve=>{
-                let f:FormData=new FormData();
-                resolve(f);
-            }),
-            json:()=>Promise.resolve(undefined),
+  headers: headers,
+  ok: true,
+  redirected: false,
+  status: 200,
+  statusText: 'Ok',
+  type: 'default',
+  url: 'testURL',
+  clone: () => {
+    return mock3Response
+  },
+  body: null,
+  bodyUsed: true,
+  arrayBuffer: () =>
+    new Promise<ArrayBuffer>((resolve) => {
+      resolve(new ArrayBuffer(8))
+    }),
+  blob: () =>
+    new Promise<Blob>((resolve) => {
+      resolve(new Blob())
+    }),
+  formData: () =>
+    new Promise<FormData>((resolve) => {
+      let f: FormData = new FormData()
+      resolve(f)
+    }),
+  json: () => Promise.resolve(undefined),
 }
 
 const mock1Request = `<?xml version="1.0" encoding="utf-8"?>
@@ -481,41 +493,41 @@ const mock3Request = `<?xml version="1.0" encoding="utf-8"?>
         </soapenv:Envelope>
         `
 
-describe('OTRSTicketGet',() => {
-    test('only one',() => {
-        global.fetch = jest.fn(()=>Promise.resolve(mock1Response))
-        TicketGet.URL = 'TestUrl'
-        const tg = new TicketGet()
-        const tc = tg.TicketConditions()
-        tc.SessionID='Ot3Pm6ztHowDXWyk2DFVO412AzKCCYor'
-        tc.AllArticles=true
-        tc.DynamicFields = true
-        tc.HTMLBodyAsAttachment = true
-        tc.GetAttachmentContents = true
-        tc.Attachments = true
-        tc.TicketID = 1355
-        tg.GetTickets().then((t) => {           
-            expect(global.fetch).toHaveBeenCalledWith("TestUrl", {"body": mock1Request, "method": "POST", "mode": "cors"})
-            const tt = t as ITicket
-            expect(tt.TicketID).toBe(1355)
-        })
+describe('OTRSTicketGet', () => {
+  test('only one', () => {
+    global.fetch = jest.fn(() => Promise.resolve(mock1Response))
+    TicketGet.URL = 'TestUrl'
+    const tg = new TicketGet()
+    const tc = tg.TicketConditions()
+    tc.SessionID = 'Ot3Pm6ztHowDXWyk2DFVO412AzKCCYor'
+    tc.AllArticles = true
+    tc.DynamicFields = true
+    tc.HTMLBodyAsAttachment = true
+    tc.GetAttachmentContents = true
+    tc.Attachments = true
+    tc.TicketID = 1355
+    tg.GetTickets().then((t) => {
+      expect(global.fetch).toHaveBeenCalledWith('TestUrl', { body: mock1Request, method: 'POST', mode: 'cors' })
+      const tt = t as ITicket
+      expect(tt.TicketID).toBe(1355)
     })
-    test('tree tickets',() => {
-        global.fetch = jest.fn(()=>Promise.resolve(mock3Response))
-        TicketGet.URL = 'TestUrl'
-        const tg = new TicketGet()
-        const tc = tg.TicketConditions()
-        tc.SessionID='upZtKD0601Qhl5kYjSMrdioB87QwpBFN'
-        tc.AllArticles=true
-        tc.DynamicFields = true
-        tc.HTMLBodyAsAttachment = true
-        tc.GetAttachmentContents = true
-        tc.Attachments = true
-        tc.TicketID = [1355, 1357, 10]
-        tg.GetTickets().then((t) => {
-            expect(global.fetch).toHaveBeenCalledWith("TestUrl", {"body": mock3Request, "method": "POST", "mode": "cors"})
-            const tt = t as ITicket[]
-            expect(tt.length).toBe(3)
-        })
+  })
+  test('tree tickets', () => {
+    global.fetch = jest.fn(() => Promise.resolve(mock3Response))
+    TicketGet.URL = 'TestUrl'
+    const tg = new TicketGet()
+    const tc = tg.TicketConditions()
+    tc.SessionID = 'upZtKD0601Qhl5kYjSMrdioB87QwpBFN'
+    tc.AllArticles = true
+    tc.DynamicFields = true
+    tc.HTMLBodyAsAttachment = true
+    tc.GetAttachmentContents = true
+    tc.Attachments = true
+    tc.TicketID = [1355, 1357, 10]
+    tg.GetTickets().then((t) => {
+      expect(global.fetch).toHaveBeenCalledWith('TestUrl', { body: mock3Request, method: 'POST', mode: 'cors' })
+      const tt = t as ITicket[]
+      expect(tt.length).toBe(3)
     })
+  })
 })

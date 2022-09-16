@@ -313,7 +313,7 @@ export interface ITicket
    * Текст локализированного статуса
    */
   StateLocText?: string
-  SessionID?:string
+  SessionID?: string
 }
 
 /**
@@ -636,516 +636,527 @@ export interface ITCResponse {
   TicketNumber: number
 }
 
-
 /**
  * @interface для организации подключения
  */
- export interface ISession{
+export interface ISession {
   /**
    * Логин пользователя для которого работает ссесия
    */
-  UserLogin:string;
+  UserLogin: string
   /**
    * Логин агента для работы с сессией
    */
-  CustomerUserLogin:string;
+  CustomerUserLogin: string
   /**
    * Пароль агента
    */
-  Password:string;
- 
+  Password: string
 }
 
 /**
-* Интерфейс заявки
-*/
+ * Интерфейс заявки
+ */
 export interface ITSTicket {
-     /**
-     * @optional
-     */
-    Limit?:number;
-    /**
-     * @ZeroOrMore
-     */
-    TicketNumber?:number[];
-    /**
-     * @ZeroOrMore
-     */
-    Title?:string[];    
-
+  /**
+   * @optional
+   */
+  Limit?: number
+  /**
+   * @ZeroOrMore
+   */
+  TicketNumber?: number[]
+  /**
+   * @ZeroOrMore
+   */
+  Title?: string[]
 }
 
 /**
  * Интерфейс очереди в заявке
  */
- export interface ITSQueues {
+export interface ITSQueues {
   /**
    * @ZeroOrMore
    */
-  Queues?:string;
+  Queues?: string
   /**
-  * @ZeroOrMore
-  */
-  QueueIDs?:string;
+   * @ZeroOrMore
+   */
+  QueueIDs?: string
   /**
    * @optional
    */
-   UseSubQueues?:string;
+  UseSubQueues?: string
 }
 
 /**
  * Тип заявки
  */
- export interface ITSTypes {
-   
+export interface ITSTypes {
   /**
-  * @ZeroOrMore
-  */
-  Types?:string[];
+   * @ZeroOrMore
+   */
+  Types?: string[]
   /**
-  * @ZeroOrMore
-  */
-  TypeIDs?:string[];
+   * @ZeroOrMore
+   */
+  TypeIDs?: string[]
 }
 
 /**
-* Состояния заявки
-*/
+ * Состояния заявки
+ */
 export interface ITSState {
   /**
-  * @ZeroOrMore
-  */
-  States?:string[];
-   /**
-  * @ZeroOrMore
-  */
-  StateIDs?:string[];
-   /**
-  * @ZeroOrMore
-  */
-  StateType?:string[];
-   /**
-  * @ZeroOrMore
-  */
-  StateTypeIDs?:string[];
+   * @ZeroOrMore
+   */
+  States?: string[]
+  /**
+   * @ZeroOrMore
+   */
+  StateIDs?: string[]
+  /**
+   * @ZeroOrMore
+   */
+  StateType?: string[]
+  /**
+   * @ZeroOrMore
+   */
+  StateTypeIDs?: string[]
 }
 
 /**
-* Приоритет заявки
-*/
-export interface ITSPriorities{
+ * Приоритет заявки
+ */
+export interface ITSPriorities {
   /**
-  * @ZeroOrMore
-  */
-  Priorities?:string[];
-    /**
-  * @ZeroOrMore
-  */
-  PriorityIDs?:string[];
+   * @ZeroOrMore
+   */
+  Priorities?: string[]
+  /**
+   * @ZeroOrMore
+   */
+  PriorityIDs?: string[]
 }
 
 /**
-* Сервисы
-*/
-export interface ITSServices{
+ * Сервисы
+ */
+export interface ITSServices {
   /**
-  * @ZeroOrMore
-  */
-  Services?:string[];
+   * @ZeroOrMore
+   */
+  Services?: string[]
   /**
-  * @ZeroOrMore
-  */
-  ServiceIDs?:string[];
+   * @ZeroOrMore
+   */
+  ServiceIDs?: string[]
   /**
-  * @ZeroOrMore
-  */
-  SLAs?:string[];
+   * @ZeroOrMore
+   */
+  SLAs?: string[]
   /**
-  * @ZeroOrMore
-  */
-  SLAIDs?:string[];
+   * @ZeroOrMore
+   */
+  SLAIDs?: string[]
 }
 
 /**
-* Блокировка
-*/
-export interface ITSLocks{
+ * Блокировка
+ */
+export interface ITSLocks {
   /**
-  * @ZeroOrMore
-  */
-  Locks?:string[];
+   * @ZeroOrMore
+   */
+  Locks?: string[]
 
-   /**
-  * @ZeroOrMore
-  */
-   LockIDs?:string[];
-
+  /**
+   * @ZeroOrMore
+   */
+  LockIDs?: string[]
 }
 
 /**
-* Владелец
-*/
-export interface ITSOwner{
+ * Владелец
+ */
+export interface ITSOwner {
   /**
-  * @ZeroOrMore
-  */
-  OwnerIDs?:string[];
+   * @ZeroOrMore
+   */
+  OwnerIDs?: string[]
 }
 
 /**
-* Ответсвтенные
-*/
-export interface ITSResponse{
+ * Ответсвтенные
+ */
+export interface ITSResponse {
   /**
-  * @ZeroOrMore
-  */
-  ResponsibleIDs?:string[];
+   * @ZeroOrMore
+   */
+  ResponsibleIDs?: string[]
   /**
-  * @ZeroOrMore
-  */
-  WatchUserIDs?:string[];
+   * @ZeroOrMore
+   */
+  WatchUserIDs?: string[]
 }
 
 /**
-* Пользователь
-*/
-export interface ITSCustomer extends ICustomers{
+ * Пользователь
+ */
+export interface ITSCustomer extends ICustomers {
   /**
    * @ZeroOrMore
    */
-  CustomerID?:string[];
+  CustomerID?: string[]
   /**
    * @ZeroOrMore
    */
-  CustomerUserID?:string[];
+  CustomerUserID?: string[]
 }
 
 /**
-* Информация о создании
-*/
-export interface ITSCreated{
+ * Информация о создании
+ */
+export interface ITSCreated {
   /**
    * @ZeroOrMore
    */
-   CreatedUserIDs?:string[];
-   /**
-   * @ZeroOrMore
-   */
-  CreatedTypes?:string[];
+  CreatedUserIDs?: string[]
   /**
    * @ZeroOrMore
    */
-  CreatedTypeIDs?:string[];
-   /**
-   * @ZeroOrMore
-   */
-  CreatedPriorities?:string[];
-   /**
-   * @ZeroOrMore
-   */
-  CreatedPriorityIDs?:string[];
+  CreatedTypes?: string[]
   /**
    * @ZeroOrMore
    */
-  CreatedStates?:string[];
+  CreatedTypeIDs?: string[]
   /**
    * @ZeroOrMore
    */
-  CreatedStateIDs?:string[];
+  CreatedPriorities?: string[]
   /**
    * @ZeroOrMore
    */
-  CreatedQueues?:string[];
+  CreatedPriorityIDs?: string[]
   /**
    * @ZeroOrMore
    */
-  CreatedQueueIDs?:string[];
+  CreatedStates?: string[]
+  /**
+   * @ZeroOrMore
+   */
+  CreatedStateIDs?: string[]
+  /**
+   * @ZeroOrMore
+   */
+  CreatedQueues?: string[]
+  /**
+   * @ZeroOrMore
+   */
+  CreatedQueueIDs?: string[]
 }
 
 /**
-* Динамическое поле
-*/
-export interface IDynamicFieldTS{
+ * Динамическое поле
+ */
+export interface IDynamicFieldTS {
   /**
    * @mandatory
    */
-  Name:string;
+  Name: string
   /**
    * @optional
    */
-  Equals?:string;
+  Equals?: string
   /**
    * @optional
    */
-   Like?:string;
-   /**
-   * @optional
-   */
-    GreaterThan?:string;
+  Like?: string
   /**
    * @optional
    */
-   GreaterThanEquals?:string;
-   /**
-   * @optional
-   */
-    SmallerThan?:string;
+  GreaterThan?: string
   /**
    * @optional
    */
-   SmallerThanEquals?:string;
+  GreaterThanEquals?: string
+  /**
+   * @optional
+   */
+  SmallerThan?: string
+  /**
+   * @optional
+   */
+  SmallerThanEquals?: string
 }
 
 /**
-* Флаг заявки
-*/
-export interface ITicketFlag{
+ * Флаг заявки
+ */
+export interface ITicketFlag {
   /**
    * @optional
    */
-   Seen?:string;
+  Seen?: string
 }
 
 /**
-* Почто подобные данные
-*/
-export interface ITSMail{
+ * Почто подобные данные
+ */
+export interface ITSMail {
   /**
    * @optional
    */
-   From?:string;
-   /**
+  From?: string
+  /**
    * @optional
    */
-    To?:string;
-    /**
+  To?: string
+  /**
    * @optional
    */
-     Cc?:string;
-   /**
+  Cc?: string
+  /**
    * @optional
    */
-    Subject?:string;
-    /**
+  Subject?: string
+  /**
    * @optional
    */
-     Body?:string;
+  Body?: string
 }
 
 /**
-* Условия поиска
-*/
-export interface ITSSearchConditions{
+ * Условия поиска
+ */
+export interface ITSSearchConditions {
   /**
    * @optional
    */
-   FullTextIndex?:string;
+  FullTextIndex?: string
   /**
    * @optional
    */
-   ContentSearch?:string;
-   /**
+  ContentSearch?: string
+  /**
    * @optional
    */
-    ConditionInline?:string;
+  ConditionInline?: string
 }
 
 /**
-* Комментарии по времени создания
-*/
-export interface ITSArticleCreate{
+ * Комментарии по времени создания
+ */
+export interface ITSArticleCreate {
   /**
    * @optional
    */
-   ArticleCreateTimeOlderMinutes?:string;
-   /**
+  ArticleCreateTimeOlderMinutes?: string
+  /**
    * @optional
    */
-    ArticleCreateTimeNewerMinutes?:string;
-    /**
+  ArticleCreateTimeNewerMinutes?: string
+  /**
    * @optional
    */
-   ArticleCreateTimeNewerDate?:string;
-   /**
+  ArticleCreateTimeNewerDate?: string
+  /**
    * @optional
    */
-    ArticleCreateTimeOlderDate?:string;
+  ArticleCreateTimeOlderDate?: string
 }
 
 /**
-* Заявка по времени создания
-*/
-export interface ITSTicketCreate{
+ * Заявка по времени создания
+ */
+export interface ITSTicketCreate {
   /**
    * @optional
    */
-   TicketCreateTimeOlderMinutes?:string;
-   /**
+  TicketCreateTimeOlderMinutes?: string
+  /**
    * @optional
    */
-    ATicketCreateTimeNewerMinutes?:string;
-    /**
+  ATicketCreateTimeNewerMinutes?: string
+  /**
    * @optional
    */
-     TicketCreateTimeNewerDate?:string;
-   /**
+  TicketCreateTimeNewerDate?: string
+  /**
    * @optional
    */
-    TicketCreateTimeOlderDate?:string;
+  TicketCreateTimeOlderDate?: string
 }
 
 /**
-* Заявка последние изменения
-*/
-export interface ITSTicketLastChange{
-   /**
-   * @optional
-   */
-    TicketLastChangeTimeOlderMinutes?:string;
+ * Заявка последние изменения
+ */
+export interface ITSTicketLastChange {
   /**
    * @optional
    */
-      TicketLastChangeTimeNewerMinutes?:string;
-   /**
+  TicketLastChangeTimeOlderMinutes?: string
+  /**
    * @optional
    */
-      TicketLastChangeTimeNewerDate?:string;
-     /**
+  TicketLastChangeTimeNewerMinutes?: string
+  /**
    * @optional
    */
-      TicketLastChangeTimeOlderDate?:string;
+  TicketLastChangeTimeNewerDate?: string
+  /**
+   * @optional
+   */
+  TicketLastChangeTimeOlderDate?: string
 }
 
 /**
-* Заявка изменена
-*/
-export interface ITSTicketChange{
+ * Заявка изменена
+ */
+export interface ITSTicketChange {
   /**
-  * @optional
-  */
-   TicketChangeTimeOlderMinutes?:string;
- /**
-  * @optional
-  */
-     TicketChangeTimeNewerMinutes?:string;
+   * @optional
+   */
+  TicketChangeTimeOlderMinutes?: string
   /**
-  * @optional
-  */
-     TicketChangeTimeNewerDate?:string;
-    /**
-  * @optional
-  */
-     TicketChangeTimeOlderDate?:string;
+   * @optional
+   */
+  TicketChangeTimeNewerMinutes?: string
+  /**
+   * @optional
+   */
+  TicketChangeTimeNewerDate?: string
+  /**
+   * @optional
+   */
+  TicketChangeTimeOlderDate?: string
 }
 
 /**
-* Заявка закрыта
-*/
-export interface ITSTicketClose{
+ * Заявка закрыта
+ */
+export interface ITSTicketClose {
   /**
-  * @optional
-  */
-   TicketCloseTimeOlderMinutes?:string;
-   /**
-  * @optional
-  */
-    TicketCloseTimeNewerMinutes?:string;
-    /**
-  * @optional
-  */
-     TicketCloseTimeNewerDate?:string;
-   /**
-  * @optional
-  */
-    TicketCloseTimeOlderDate?:string;
+   * @optional
+   */
+  TicketCloseTimeOlderMinutes?: string
+  /**
+   * @optional
+   */
+  TicketCloseTimeNewerMinutes?: string
+  /**
+   * @optional
+   */
+  TicketCloseTimeNewerDate?: string
+  /**
+   * @optional
+   */
+  TicketCloseTimeOlderDate?: string
 }
 
 /**
-* Заявка в ожидании
-*/
-export interface ITSTicketPending{
+ * Заявка в ожидании
+ */
+export interface ITSTicketPending {
   /**
-  * @optional
-  */
-  TicketPendingTimeOlderMinutes?:string;
+   * @optional
+   */
+  TicketPendingTimeOlderMinutes?: string
   /**
-  * @optional
-  */
-   TicketPendingTimeNewerMinutes?:string;
-   /**
-  * @optional
-  */
-    TicketPendingTimeNewerDate?:string;
+   * @optional
+   */
+  TicketPendingTimeNewerMinutes?: string
   /**
-  * @optional
-  */
-   TicketPendingTimeOlderDate?:string;
+   * @optional
+   */
+  TicketPendingTimeNewerDate?: string
+  /**
+   * @optional
+   */
+  TicketPendingTimeOlderDate?: string
 }
 
 /**
-* Эскалация заявки
-*/
-export interface ITSTicketEscalation{
+ * Эскалация заявки
+ */
+export interface ITSTicketEscalation {
   /**
-  * @optional
-  */
-   TicketEscalationTimeOlderMinutes?:string;
+   * @optional
+   */
+  TicketEscalationTimeOlderMinutes?: string
   /**
-  * @optional
-  */
-   TTicketEscalationTimeNewerMinutes?:string;
+   * @optional
+   */
+  TTicketEscalationTimeNewerMinutes?: string
   /**
-  * @optional
-  */
-   TicketEscalationTimeNewerDate?:string;
+   * @optional
+   */
+  TicketEscalationTimeNewerDate?: string
   /**
-  * @optional
-  */
-   TicketEscalationTimeOlderDate?:string;
+   * @optional
+   */
+  TicketEscalationTimeOlderDate?: string
 }
 
 /**
-* Сортировка объединение и архивирование
-*/
-export interface ITSAOS{
+ * Сортировка объединение и архивирование
+ */
+export interface ITSAOS {
   /**
    * Архивные значения
-  * @optional
-  */
-   ArchiveFlags?:string;
-   /**
-    * Объединять по
+   * @optional
+   */
+  ArchiveFlags?: string
+  /**
+   * Объединять по
    * @ZeroOrMore
    */
-    OrderBy? : string[];
-     /**
-      * Соритровать по
+  OrderBy?: string[]
+  /**
+   * Соритровать по
    * @ZeroOrMore
    */
-  SortBy? : string[];
+  SortBy?: string[]
 }
 
 /**
-* @see https://doc.otrs.com/doc/manual/admin/6.0/ru/html/genericinterface.html#id-1.6.12.5.4.2
-* @see https://doc.znuny.org/doc/api/otrs/6.0/Perl/Kernel/GenericInterface/Operation/Ticket/TicketSearch.pm.html
-*/
-export interface ITSBase extends ITicketAuth, ITSTicket, ITSQueues, ITSTypes, 
-ITSState, ITSPriorities, ITSServices, ITSLocks, ITSOwner, ITSResponse, ITSCustomer,
-ITSCreated, ITSMail, ITSSearchConditions, ITSArticleCreate, ITSTicketCreate, ITSTicketLastChange,
-ITSTicketChange, ITSTicketPending, ITSTicketEscalation, ITSAOS
-{
+ * @see https://doc.otrs.com/doc/manual/admin/6.0/ru/html/genericinterface.html#id-1.6.12.5.4.2
+ * @see https://doc.znuny.org/doc/api/otrs/6.0/Perl/Kernel/GenericInterface/Operation/Ticket/TicketSearch.pm.html
+ */
+export interface ITSBase
+  extends ITicketAuth,
+    ITSTicket,
+    ITSQueues,
+    ITSTypes,
+    ITSState,
+    ITSPriorities,
+    ITSServices,
+    ITSLocks,
+    ITSOwner,
+    ITSResponse,
+    ITSCustomer,
+    ITSCreated,
+    ITSMail,
+    ITSSearchConditions,
+    ITSArticleCreate,
+    ITSTicketCreate,
+    ITSTicketLastChange,
+    ITSTicketChange,
+    ITSTicketPending,
+    ITSTicketEscalation,
+    ITSAOS {
   /**
    * Набор поисковых данных по динамическим полям
    * @ZeroOrMore
    */
-  DynamicField? : IDynamicFieldTS[];
-   /**
-    * Поиск по флагу заявки
+  DynamicField?: IDynamicFieldTS[]
+  /**
+   * Поиск по флагу заявки
    * @optional
    */
-    Ticketflag?:ITicketFlag;
+  Ticketflag?: ITicketFlag
 }
-
 
 /**
  * @see https://doc.znuny.org/doc/api/otrs/6.0/Perl/Kernel/GenericInterface/Operation/Ticket/TicketGet.pm.html
@@ -1153,157 +1164,152 @@ ITSTicketChange, ITSTicketPending, ITSTicketEscalation, ITSAOS
  */
 
 /**
-  * Набор идентификаторов заявок
-  */
- export interface ITGTicket{
+ * Набор идентификаторов заявок
+ */
+export interface ITGTicket {
   /**
    * @OneOrMore
    * @required
    * Набор идентификаторов заявок
    */
-  TicketID: number | number[];
+  TicketID: number | number[]
 }
 
 /**
-  * Нужен ли набор динамических полей
-  */
- export interface ITGDynamicFields{
+ * Нужен ли набор динамических полей
+ */
+export interface ITGDynamicFields {
   /**
    * @optional
    * 0 as default. Indicate if Dynamic Fields
    * should be included or not on the ticket content.
    */
-  DynamicFields?:boolean;
+  DynamicFields?: boolean
 }
 
 /**
-  * Необходимость отображения расширения
-  */
- export interface ITGExtended{
+ * Необходимость отображения расширения
+ */
+export interface ITGExtended {
   /**
    * @optional 0 as default
    */
-   Extended?:boolean;
+  Extended?: boolean
 }
 
 /**
-* Реплики по заявке
-*/
-export interface ITGArticles{
+ * Реплики по заявке
+ */
+export interface ITGArticles {
   /**
    * @optional
    *  0 as default. Set as 1 will include articles for tickets.
    */
-   AllArticles?:boolean;
-   /**
+  AllArticles?: boolean
+  /**
    * @optional
    * only requested article sender types
    */
-   ArticleSenderType?:string[];
-    /**
+  ArticleSenderType?: string[]
+  /**
    * @optional
    * DESC,ASC - default is ASC
    */
-  ArticleOrder?:string;
+  ArticleOrder?: string
   /**
    * @optional
    */
-   ArticleLimit?:number;
+  ArticleLimit?: number
 }
 
 /**
-* Приложения к заявке
-*/
-export interface ITGAttachments{
+ * Приложения к заявке
+ */
+export interface ITGAttachments {
   /**
    * @optional
    * 0 as default. If it's set with the value 1,
    * attachments for articles will be included on ticket data
    */
-  Attachments?:boolean;
+  Attachments?: boolean
   /**
    * @optional
    *  1 as default. 0|1
    */
-  GetAttachmentContents?:boolean;
+  GetAttachmentContents?: boolean
   /**
    * @optional
    * If enabled the HTML body version of each article
    * is added to the attachments list
    */
-  HTMLBodyAsAttachment?:boolean;
+  HTMLBodyAsAttachment?: boolean
 }
 
 /**
-* Базовый интерфейс
-*/
-export interface ITGBase extends IAuth, ITGTicket, ITGDynamicFields, ITGExtended,
-ITGArticles,ITGAttachments
-{}
+ * Базовый интерфейс
+ */
+export interface ITGBase extends IAuth, ITGTicket, ITGDynamicFields, ITGExtended, ITGArticles, ITGAttachments {}
 
 /**
  * @interface базовый для создания заявки
  * @extends {IAuth}
  */
- export interface ITicketCreateBase extends IAuth {
+export interface ITicketCreateBase extends IAuth {
   /**
    * Тело заявки
    */
-  Ticket:ITicketCreate;
-   /**
+  Ticket: ITicketCreate
+  /**
    * Реплика
    */
-    Article:IAddArticle;
+  Article: IAddArticle
   /**
    * набор динамических полей
    */
-  DynamicField?:IDynamicField[];
+  DynamicField?: IDynamicField[]
   /**
    * набор прикрепленных приложений
    */
-   Attachment:IArticleAttachment[];
+  Attachment: IArticleAttachment[]
 }
 
-
-export interface ValuePart{
-  PartName:'SessionCreate'|'TicketSearch'|'TicketGet'|'TicketCreate'|'TicketUpdate';
-  Values:any;
+export interface ValuePart {
+  PartName: 'SessionCreate' | 'TicketSearch' | 'TicketGet' | 'TicketCreate' | 'TicketUpdate'
+  Values: any
 }
 
-export interface IOTRSAnswer{
-  "soap:Body":IOTRSBodyAnswer;
+export interface IOTRSAnswer {
+  'soap:Body': IOTRSBodyAnswer
 }
 
-export interface IOTRSBodyAnswer{
-  SessionCreateResponse:IOTRSSessionAnswer;
-  TicketSearchResponse:ITicketSearchResponse;
-  TicketGetResponse :ITicketGetResponse;
-  TicketCreateResponse : ITicketCreateResponse;
-  TicketUpdateResponse: ITicketUpdateResponse;
+export interface IOTRSBodyAnswer {
+  SessionCreateResponse: IOTRSSessionAnswer
+  TicketSearchResponse: ITicketSearchResponse
+  TicketGetResponse: ITicketGetResponse
+  TicketCreateResponse: ITicketCreateResponse
+  TicketUpdateResponse: ITicketUpdateResponse
 }
 
-export interface IOTRSSessionAnswer extends Error{
-  SessionID:string;
+export interface IOTRSSessionAnswer extends Error {
+  SessionID: string
 }
 
-export interface Error{
-  Error?:any;
+export interface Error {
+  Error?: any
 }
 
-export interface ITicketSearchResponse extends Error{
-  TicketID:number[]|number;
+export interface ITicketSearchResponse extends Error {
+  TicketID: number[] | number
 }
 
-export interface ITicketGetResponse extends Error{
-  Ticket:ITicket|ITicket[]
+export interface ITicketGetResponse extends Error {
+  Ticket: ITicket | ITicket[]
 }
 
-export interface ITicketCreateResponse extends Error, ITCResponse{
+export interface ITicketCreateResponse extends Error, ITCResponse {}
 
-}
-
-export interface ITicketUpdateResponse extends Error{
-  TicketID:number;
-  TicketNumber:number;
-  ArticleID?:number;
+export interface ITicketUpdateResponse extends Error {
+  TicketID: number
+  TicketNumber: number
+  ArticleID?: number
 }
