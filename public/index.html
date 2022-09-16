@@ -317,7 +317,17 @@ Auditori
 	<div class="button green" onclick="createTicket()">Create Ticket</div>
 	<div id="TicketCreateResult" style="max-width: 75vw;"></div>
 </div>
-
+<div style="width: 100%; margin-top: 2em;">
+	<h2>Обновление заявки</h2>
+	<p><label style="width: 10em;display: inline-block;" >URL TU</label> <input id="urlTU" style="width: 100%;"/></p>
+	<p><label style="width: 10em;display: inline-block;" >(old) new Title</label> <input id="onTicTitle"/></p>
+	<p><label style="width: 10em;display: inline-block;" >(old) new QueueID</label> <input id="onQueueID"/></p>
+	<p><label style="width: 10em;display: inline-block;" >Article Title</label> <input id="ArtTit"/></p>
+	<p><label style="width: 10em;display: inline-block;" >new Article - Body</label> <textarea id="ArticleBodyNew"> </textarea></p>
+	<div class="button green" onclick="getTickets()">Get Ticket</div>
+	<div class="button green" onclick="updateTicket()">Update Ticket</div>
+	<div id="TicketUpdateResult" style="max-width: 75vw;"></div>
+</div>
 <script>
 	function Connect(){
 		OTRSSession.TimerInterval=3600000;
@@ -404,6 +414,17 @@ Auditori
 		tgC.Attachments=true
 		tgC.TicketID= document.getElementById("tid").value.split(';')
 		tg.GetTickets().then(m=>{
+			if(m.length){
+				if(m[0]){
+					document.getElementById("onTicTitle").value=m[0].Title
+					document.getElementById("onQueueID").value=m[0].QueueID
+				}
+			}else{
+				if(m){
+					document.getElementById("onTicTitle").value=m.Title
+					document.getElementById("onQueueID").value=m.QueueID
+				}
+			}
 			document.getElementById("TicketResult").innerHTML=JSON.stringify(m)
 		})
 		const date = new Date()
@@ -449,6 +470,67 @@ Auditori
 		console.log(tc)
 		const date = new Date()
 		console.log(date + ' - Create Ticket')
+	}
+
+	async function updateTicket(){
+		const tt = await getTicketData();
+		const tic = {}
+		tic.TicketID=tt.TicketID;
+		tic.SessionID = OTRSSession.SessionId() 
+		tic.Title = document.getElementById("onTicTitle").value
+		tic.QueueID = document.getElementById("onQueueID").value
+		tic.Article=[]
+		const artTUPD=getArticleToUpd();
+		if(artTUPD){
+			tic.Article.push(artTUPD);
+		}
+		OTRSTicketUpdate.URL=document.getElementById("urlTU").value;
+		const res = new OTRSTicketUpdate();
+		res.Ticket=tic;
+		const resp = await res.Update();
+		console.log(resp)
+		const date = new Date()
+		console.log(date + ' - Update Ticket')
+	}
+
+	async function getTicketData(){
+		OTRSTicketGet.URL=document.getElementById("urlTG").value 
+		const tg = new OTRSTicketGet()
+		const tgC = tg.TicketConditions()
+		tgC.SessionID = OTRSSession.SessionId()  
+		tgC.AllArticles=true
+		tgC.DynamicFields=true
+		tgC.HTMLBodyAsAttachment=true
+		tgC.GetAttachmentContents=true
+		tgC.Attachments=true
+		tgC.TicketID= document.getElementById("tid").value.split(';')[0]
+		const ts = await tg.GetTickets()
+		if(ts.length){
+			if(ts[0]){
+				return ts[0]
+			}
+		}else{
+			return ts;
+		}
+	}
+
+	function getArticleToUpd(){
+		const tit = document.getElementById('ArtTit').value;
+		const body= document.getElementById("ArticleBodyNew").value;
+		if(tit && body){
+			let res={};
+			res.Subject=tit;
+        	res.Body=OTRSTicketCreate.EscapeBracket(body);
+        	res.ContentType="text/html; charset=utf8";
+        	res.Charset="utf-8";
+        	res.MimeType="text/html";
+        	res.IsVisibleForCustomer=1;
+        	res.SenderTypeID="3"; 
+			return res;
+		}else{
+			return undefined;
+		}
+		
 	}
 
 </script>

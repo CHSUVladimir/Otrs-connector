@@ -313,6 +313,7 @@ export interface ITicket
    * Текст локализированного статуса
    */
   StateLocText?: string
+  SessionID?:string
 }
 
 /**
@@ -1265,7 +1266,7 @@ ITGArticles,ITGAttachments
 
 
 export interface ValuePart{
-  PartName:'SessionCreate'|'TicketSearch'|'TicketGet'|'TicketCreate';
+  PartName:'SessionCreate'|'TicketSearch'|'TicketGet'|'TicketCreate'|'TicketUpdate';
   Values:any;
 }
 
@@ -1278,6 +1279,7 @@ export interface IOTRSBodyAnswer{
   TicketSearchResponse:ITicketSearchResponse;
   TicketGetResponse :ITicketGetResponse;
   TicketCreateResponse : ITicketCreateResponse;
+  TicketUpdateResponse: ITicketUpdateResponse;
 }
 
 export interface IOTRSSessionAnswer extends Error{
@@ -1298,4 +1300,10 @@ export interface ITicketGetResponse extends Error{
 
 export interface ITicketCreateResponse extends Error, ITCResponse{
 
+}
+
+export interface ITicketUpdateResponse extends Error{
+  TicketID:number;
+  TicketNumber:number;
+  ArticleID?:number;
 }
