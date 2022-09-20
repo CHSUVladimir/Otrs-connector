@@ -1,0 +1,3 @@
+resolve: {
+    extensions: ['.js', '.ts']
+}

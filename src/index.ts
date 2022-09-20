@@ -74,6 +74,7 @@ export type {
   ITicketUpdateResponse,
 } from './Soap/SoapTypes'
 
+export { XMLParser } from 'fast-xml-parser'
 export { default as Connector } from './OTRS/OTRSConnector'
 export { default as Soap } from './Soap/SoapSerialitor'
 export { default as OTRSSession } from './OTRS/OTRSSession'
